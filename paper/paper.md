@@ -1,56 +1,105 @@
 ---
-title: 'The Experiment Factory: Reproducible Experiment Containers'
+title: 'IC-Layout Render: Image rendering tool for integrated circuit layout in Python'
 tags:
-  - containers
-  - docker
-  - psychology
-  - reproducibility
-  - Docker
+	- Python
+	- Graphic Design System
+	- integrated circuit
+	- layout illustration
 authors:
- - name: Vanessa Sochat
-   orcid: 0000-0002-4387-3819
-   affiliation: 1
-affiliations:
- - name: Stanford University Research Computing
-   index: 1
-date: 28 November 2017
+	- name: João R. R. O. Martins
+	orcid: 
+	affiliation: "1, 2"
+	- name: Pietro M. Ferreira
+	orcid: 0000-0002-0038-9058
+	affiliation: "1, 2"
+affiliation:
+	- name: Université Paris-Saclay, CentraleSupélec, CNRS, Lab. de Génie Électrique et Électronique de Paris,91192,Gif-sur-Yvette,France
+	index: 1
+	- name: Sorbonne Université, CNRS, Lab. de Génie Électrique et Électronique de Paris, 75252, Paris, France
+	index: 2
+date: 05 November 2021
 bibliography: paper.bib
 ---
 
 # Summary
 
-The Experiment Factory [@vanessa_sochat_2017_1059119] is Open Source software that makes it easy to generate reproducible behavioral experiments. It offers a browsable, and tested [library](https://expfactory.github.io/experiments/) of experiments, games, and surveys, support for multiple kinds of databases, and [robust documentation](https://expfactory.github.io/expfactory/) for the provided tools. A user interested in deploying a behavioral assessment can simply select a grouping of paradigms from the web interface, and build a container to serve them.
+Graphic Design System (GDSII) from [@Calma1987] is a common database file format to stream out integrated circuit (IC) masks, also called layout, before fabrication. 
+Being an essential part of circuit development, designers are often familiarized in how to generate this binary file on computer-aided design (CAD) tools. 
+This output file contains planar geometric shapes which represent physical 3D layers from a specific process design kit (PDK). 
+Commercial PDK usually presents more than 50 layers, which are 2D visualized in CAD tools. 
 
-![img/portal.png](img/portal.png)
+Reading a layout in those CAD tools is not a simple task, however high-quality graphical image is available in such tool. 
+Thus, an IC designer is capable to understand the data representation and point out improvements for the IC. 
+Nevertheless, IC documentation is often delivered in a lower quality 2D image depicted in a PDF file. 
+Once the PDF is generated; the circuit layout becomes hardly readable even for experienced IC designers.
 
+Scientific communications require accurate and repeatable results to be considered prior publication. 
+In microelectronics research field, a layout picture is mandatory. 
+While illustrations should be a vectorial graph like, IC layout is often depicted from a low-quality bitmap obtained from a screenshot or an image saving through the CAD tool. 
+In this scenario, having an accurate, readable, and reproducible layout result is a challenge. 
+Most publications illustrate IC layouts in lower standards than the other illustration results, which hinds the required physical solution to address state-of-the-art IC performance.
 
-# Challenges with Behavioral Research
+The tool icLayoutRender aims to a user-friendly transcription of a GDSII file in a pdf file. 
+Developed in Python 3, the image rendering requires an input GDSII file <cellName.gds> and the PDK layer color file <LayerColor_PDK.map> to produce an output PDF file <cellName.pdf>. 
+The GDSII layers will be rendered using the available PDK layer colors. Missing layers will be neglected.
 
-The reproducibility crisis [@Ram2013-km, @Stodden2010-cu, @noauthor_2015-ig, @noauthor_undated-sn, @Baker_undated-bx, @Open_Science_Collaboration2015-hb] has been well met by many efforts [@Belmann2015-eb, @Moreews2015-dy, @Boettiger2014-cz, @Santana-Perez2015-wo, @Wandell2015-yt] across scientific disciplines to capture dependencies required for a scientific analysis. Behavioral research is especially challenging, historically due to the need to bring a study participant into the lab, and currently due to needing to develop and validate a well-tested set of paradigms. A common format for these paradigms is a web-based format that can be done on a computer with an internet connection, without one if all resources are provided locally. However, while many great tools exist for creating the web-based paradigms [@De_Leeuw2015-zw, @McDonnell2012-ns], still lacking is assurance that the generated paradigms will be reproducible. Specifically, the following challenges remain:
+The tool icLayoutRender does:
+	1. confirm the entered values;
+	2. item convert the *.gds to a *.tex file;
+	3. call LuaTeX or pdflatex to generate a *.aux, and *.pdf.
 
- - **Dependencies** such as software, experiment static files, and runtime variables must be captured for reproduciblity.
- - Individual experiments and the library must be **version controlled.**
- - Each experiment could benefit from being maintianed and tested in an **Open Source** fashion. This means that those knowledgable about the paradigm can easily collaborate on code, and others can file issues and ask questions.
- - Tools must allow for **flexibility** to allow different libraries (e.g., JavaScript).
- - The final product should be **easy to deploy** exactly as the creator intended.
+The tool icLayoutRender requires:
+	1. Python3 installed with devel options;
+	2. gdspy, pandas, math, and GDSLatexConverter [@Vollmer2020] Python libraries installed;
+	3. TexLive for a Linux installation, or  MikTEX for a Windows installation;
+	4. tikz LaTEX package to compile the output *.pdf  file.
 
-The early version of the Experiment Factory [@Sochat2016-pu] did a good job to develop somewhat modular paradigms, and offered a small set of Python tools to generate local, static batteries from a single repository. Unfortunately, it was severely limited in its ability to scale, and provide reproducible deployments via linux containers [@Merkel2014-da]. The experiments were required to conform to specific set of software, the lack of containerization meant that installation was challenging and error prone, and importantly, it did not meet the complete set of goals outlined above. While the `expfactory-docker` [@noauthor_undated-pi, @Sochat2016-pu] image offered a means to deploy experiments to Amazon Mechanical Turk, it required substantial setup and was primarily developed to meet the specific needs of one lab.
+Several examples using icLayoutRender are freely available on the official website. 
+Layer color file generation is also explained in the user manual, as installation procedure and the tool operation in Linux and Windows. 
+The icLayoutRender image rendering tool has been used in recent scientific communication [@Martins2021] and the illustration readability is remarkable.
 
-![img/expfactory.png](img/expfactory.png)
+# Overview of icLayoutRender tool
 
-# Experiment Container Generation
-The software outlined here, "expfactory," shares little with the original implementation beyond the name. Specifically, it allows for encapsulation of all dependencies and static files required for behavioral experimentation, and flexibility to the user for configuration of the deployment. For usage of a pre-existing experiment container, the user simply needs to run the Docker image. For generation of a new, custom container the generation workflow is typically the following:
- 
- - **Selection** The user browses a [library](https://expfactory.github.io/experiments/) of available experiments, surveys, and games. A preview is available directly in the browser, and data saved to the local machine for inspection. The preview reflects exactly what will be installed into the container.
- - **Generation** The user selects one or more paradigms to add to the container, and clicks "Generate." The user runs the command shown in the browser on his or her local machine to produce the custom recipe for the container, called a Dockerfile.
- - **Building** The user builds the container (and optionally adds the Dockerfile to version control or automated building on Docker Hub) and uses it in production. The same container is then available for others that want to reproduce the experiment.
+In commercial CAD tools, the GDSII file is obtained following a common procedure File->Export->Stream. 
+The output stream file should be named as <cellName.gds> and selected as the top cell to be exported from an available layout. 
+The GDSII file should be saved in the same folder as the proposed tool for a user-friendly operation.
 
-At runtime, the user is then able to select deployment customization such as database (MySQL, PostgreSQL, sqlite3, or default of filesystem), and a study identifier.
+The LayerColors.map file is created for a specific PDK. 
+Commercially available PDK, as [@XFAB:019], has the layers: diffusion in lime, poly-Si in red, n-type implantation in gold, p-type implantation in pink, and others. 
+The layer color file format is depicted in the \autoref{ver:LayerMAP} One may notice that lime, red, gold, and pink colors are represented in RGB color code. 
+GDS layer number and name are available in the PDK layer map file (see \@ref{fig:LayerNumbers}), while the color and its code are obtained in the technology file. 
+A user-friendly layer window (LSW) is often available aid both files translation in the requested LayerColors.map. 
+One may implement an automation tool for such translation. However, this procedure is only run once per PDK. GDS number, layer name, and color do not change between different PDK versions. 
+Moreover, CAD tools usually uses the color code proposed in the example \autoref{ver:LayerMAP}. Thus, this procedure is only required in the installation of a new PDK and the layer colors are usually the same. 
+The GDS number is the data that mostly change between different PDK files.
+![Checking layer numbers in a commercial PDK as [@XFAB2019]. \label{fig:LayerNumbers}](img/LayerNumbers.png){ width=40% }
+![Checking layer collors in a commercial PDK as [@XFAB2019]. \label{fig:LayerColors}](img/LayerColors.png){ width=40% }
+(#ver:LayerMAP)
 
+```
+GDSNumber!Layer!Collor
+4!DIFF!{rgb:red,0;green,255;blue,0}
+5!POLY!{rgb:red,255;green,0;blue,0}
+6!NIMP!{rgb:red,217;green,204;blue,0}
+7!PIMP!{rgb:red,255;green,191;blue,242}
+```
 
-# Experiment Container Usage
-Once a container is generated and it's unique identifier and image layers served in a registry like Docker Hub, it can be cited in a paper with confidence that others can run and reproduce the work simply by using it.
+To prove the advantage of using icLayoutRender tool, the authors have rendered the IC layout known as StrongArm latched comparator and proposed in [@Fonseca2017]. 
+The original image file is reproduced in Fig \autoref{fig:SA_Fonseca} using a grey color scale. Figure \autoref{fig:SA_ColorRendering} depicts the same IC layout 
+rendered by the proposed tool in a colored version, and \autoref{fig:SA_GrayRendering} is a gray scaled version of the rendering. 
+A full color version of this example is depicted in Fig. \autoref{fig:SA_original} and \autoref{fig:SA_ColorRendering}.
+Another example of IC layout known as OTA Miler is compared in Fig \autoref{fig:OTA_original}, using standard tools, and in Fig \autoref{fig:OTA_ColorRendering}, using the icLayoutRender solution.
+Both illustration examples are obtained from an IC design using the PDK of [@XFAB2019]. 
+The authors invite the reader to now increase zoom over Fig. \autoref{fig:SA_original} and \autoref{fig:SA_ColorRendering}, or over  \autoref{fig:OTA_original} and \autoref{fig:OTA_ColorRendering}
+to assert the vectorial graphical rendering obtained by the proposal in which the standard tool is unable to attain. 
 
-More information on experiment development and contribution to the expfactory tools, containers, or library is provided at the Experiment Factory  <a href="https://expfactory.github.io/expfactory/" target="_blank">official documentation</a>. This is an Open Source project, and so <a href="https://www.github.com/expfactory/expfactory/issues" target="_blank">feedback and contributions</a> are encouraged and welcome.
+![Original StrongArm latched comparator layout proposed in [@Fonseca2017]. \label{fig:SA_Fonseca}](img/SA_Fonseca.png){ width=40% }
+![StrongArm latched comparator layout rendered by the proposed tool (gray scaled version). \label{fig:SA_GrayRendering}](img/SA_GrayRendering.svg){ width=40% }
+
+![Original StrongArm latched comparator layout in full color. \label{fig:SA_original}.](img/SA_original.png){ width=40% }
+![StrongArm latched comparator layout rendered by the proposed tool (colored version). \label{fig:SA_ColorRendering}](img/SA_ColorRendering.svg){ width=40% }
+
+![Original OTA Miler amplifier layout.\label{fig:OTA_original}.](img/OTA_original.png){ width=40% }
+![OTA Miler amplifier layout rendered by the proposed tool (colored version). \label{fig:OTA_ColorRendering}](img/OTA_ColorRendering.svg){ width=40% }
 
 # References
