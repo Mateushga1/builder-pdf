@@ -64,6 +64,15 @@ In commercial CAD tools, the GDSII file is obtained following a common procedure
 The output stream file should be named as <cellName.gds> and selected as the top cell to be exported from an available layout. 
 The GDSII file should be saved in the same folder as the proposed tool for a user-friendly operation.
 
+\begin{verbatim}
+\label{ver:LayerMAP}
+GDSNumber!Layer!Collor
+4!DIFF!{rgb:red,0;green,255;blue,0}
+5!POLY!{rgb:red,255;green,0;blue,0}
+6!NIMP!{rgb:red,217;green,204;blue,0}
+7!PIMP!{rgb:red,255;green,191;blue,242}
+\end{verbatim}
+
 The LayerColors.map file is created for a specific PDK. 
 Commercially available PDK, as [@XFAB:019], has the layers: diffusion in lime, poly-Si in red, n-type implantation in gold, p-type implantation in pink, and others. 
 The layer color file format is depicted in the \autoref{ver:LayerMAP} One may notice that lime, red, gold, and pink colors are represented in RGB color code. 
