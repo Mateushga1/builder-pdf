@@ -2235,7 +2235,7 @@ You can also see this tutorial from STMicroelectronics on how to configure deadt
 - **STM32CubeIDE**: An integrated development environment from STMicroelectronics for STM32 microcontrollers.
 - **STM32CubeMX**: A graphical tool that helps in configuring STM32 microcontrollers.
 - **STM32CubeProgrammer**: A tool used for programming STM32 microcontrollers.
-- **TFLite**: TensorFlow Lite, a set of tools to help developers run TensorFlow models on mobile, embedded, and IoT devices.
+- **TFLite**: TensorFlow Lite is a set of tools to help developers run TensorFlow models on mobile, embedded, and IoT devices.
 - **UART (Universal Asynchronous Receiver/Transmitter)**: A hardware communication protocol that uses asynchronous serial communication with configurable speed.
 
 ## 6. References
