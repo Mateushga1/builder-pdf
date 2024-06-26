@@ -13,7 +13,7 @@ This repository contains a two-part tutorial aimed at helping you develop practi
 
 # Table of Contents
 
-- [Conception\_IoT](#conception_iot)
+- [Conception_IoT](#conception_iot)
 - [Table of Contents](#table-of-contents)
 - [Chapter 1: IoT Applications](#chapter-1-iot-applications)
   - [1. Project Presentation](#1-project-presentation)
@@ -333,22 +333,22 @@ When the program starts, a new tab appears in the bottom right section of the to
    - `ST BSP_B-L475E-IOT01`
 3. You will quickly find an official project from ST.
 
-    <p align="center">
-        <img src="images/7.png" alt="figure 11"/>
-    </p>
+<p align="center">
+    <img src="images/7.png" alt="figure 11"/>
+</p>
 
 4. Copy the link address by right-clicking on it.
 
-    <p align="center">
-        <img src="images/8.png" alt="figure 12"/>
-    </p>
+<p align="center">
+    <img src="images/8.png" alt="figure 12"/>
+</p>
 
 5. Then, go to the menu: **File -> Import Program**
 6. Paste the previously copied address and click on **Add Program**.
 
-    <p align="center">
-        <img src="images/9.png" alt="figure 13"/>
-    </p>
+<p align="center">
+    <img src="images/9.png" alt="figure 13"/>
+</p>
 
 Open the code of `main.cpp`. Read the main program for a better understanding of the application.
 
@@ -413,9 +413,9 @@ To enable this functionality:
 
 1. Open the [`mbed_lib.json`](chapter-1/internal-sensors/mbed-os/platform/mbed_lib.json) file in the path `chapter-1/internal-sensors/mbed-os/platform` of your project.
 
-    <p align="center">
-        <img src="images/15.png" alt="figure 19"/>
-    </p>
+<p align="center">
+    <img src="images/15.png" alt="figure 19"/>
+</p>
 
 2. Look for the section:
 
@@ -998,9 +998,9 @@ To use ThingSpeak, follow these steps:
 2. Create an account (it's the same account as MATLAB if you have one).
 3. After creating the account, create a Channel (click New Channel) in the Channels/My Channels menu. This will store your transmitted data.
 
-    <p align="center">
-        <img src="images/25.png" alt="figure 33"/>
-    </p>
+<p align="center">
+    <img src="images/25.png" alt="figure 33"/>
+</p>
 
 4. Specify your Channel attributes:
 
@@ -1350,21 +1350,21 @@ The first step is to export your model in the `.tflite` format to be used in our
 
 1. First, we will import our `tflite_sinewave_training.ipynb` file into the [`Google Colab`](https://colab.research.google.com/) environment via **File -> Upload Notebook**.
 
-    <p align="center">
-        <img src="images/30.png" alt="figure 41"/>
-    </p>
+<p align="center">
+    <img src="images/30.png" alt="figure 41"/>
+</p>
 
 2. Then, run all the cells in **Runtime -> Run All**.
 
-    <p align="center">
-        <img src="images/31.png" alt="figure 42"/>
-    </p>
+<p align="center">
+    <img src="images/31.png" alt="figure 42"/>
+</p>
 
 3. After the execution is complete, download the `sine_model.tflite` file.
 
-    <p align="center">
-        <img src="images/32.png" alt="figure 43"/>
-    </p>
+<p align="center">
+    <img src="images/32.png" alt="figure 43"/>
+</p>
 
 The same file is also available at:
 
@@ -1379,27 +1379,27 @@ To do this, follow these steps:
 1. Open `STM32CubeIDE`.
 2. Log in with your `myST` account.
 
-    <p align="center">
-        <img src="images/33.png" alt="figure 44"/>
-    </p>
+<p align="center">
+    <img src="images/33.png" alt="figure 44"/>
+</p>
 
 3. Go to **Help -> Manage Embedded Software Packages**.
 
-    <p align="center">
-        <img src="images/34.png" alt="figure 45"/>
-    </p>
+<p align="center">
+    <img src="images/34.png" alt="figure 45"/>
+</p>
 
 4. Under **STMicroelectronics**, search for the **X-Cube-AI** package.
 
-    <p align="center">
-        <img src="images/35.png" alt="figure 46"/>
-    </p>
+<p align="center">
+    <img src="images/35.png" alt="figure 46"/>
+</p>
 
 5. Install version `5.2.0` by clicking **Install**. `Do not use another version`, as the implementation of the package libraries may differ from what is shown here.
 
-    <p align="center">
-        <img src="images/36.png" alt="figure 47"/>
-    </p>
+<p align="center">
+    <img src="images/36.png" alt="figure 47"/>
+</p>
 
 ### 2.3 Project Initialization
 
@@ -1407,27 +1407,27 @@ Now we will start our project. To do this:
 
 1. Click on **File -> New -> STM32 Project**.
 
-    <p align="center">
-        <img src="images/37.png" alt="figure 48"/>
-    </p>
+<p align="center">
+    <img src="images/37.png" alt="figure 48"/>
+</p>
 
 2. Select the **Board Selector** tab and search for `B-U585I-IOT02A`, click on it and then click **Next**.
 
-    <p align="center">
-        <img src="images/38.png" alt="figure 49"/>
-    </p>
+<p align="center">
+    <img src="images/38.png" alt="figure 49"/>
+</p>
 
 3. Choose a name for your project and leave the default settings as shown in the image, then select **Finish**. If asked to initialize all peripherals, click **Yes** to already pre-configure your microcontroller pins and functionalities.
 
-    <p align="center">
-        <img src="images/39.png" alt="figure 50"/>
-    </p>
+<p align="center">
+    <img src="images/39.png" alt="figure 50"/>
+</p>
 
 4. You will then have your development environment, with the central window being the STM32CubeMX that shows your microcontroller chip and its pins.
 
-    <p align="center">
-        <img src="images/40.png" alt="figure 51"/>
-    </p>
+<p align="center">
+    <img src="images/40.png" alt="figure 51"/>
+</p>
 
 ### 2.4 The Basics of STM32CubeIDE
 
@@ -1469,39 +1469,39 @@ Follow these steps to configure our project:
 
 1. In the `Timers` tab, activate `TIM16` so that it ticks every microsecond. To do this, select `TIM16`, check `Activated` in **Mode**, and in the **Configuration** tab, set the `Prescaler` to meet our requirement of ticking every microsecond (160-1=159 for a system clock of 160 MHz) and set the `AutoReload register` to its maximum (65535 for a 16-bit timer). For a better understanding of how timers work, see section [`4`](#4-timer-and-trigger-management-in-stm32cubeide-projects) of the same chapter.
 
-    <p align="center">
-        <img src="images/44.png" alt="figure 55"/>
-    </p>
+<p align="center">
+    <img src="images/44.png" alt="figure 55"/>
+</p>
 
 2. Next, we will add the `X-CUBE-AI` package to the project. Click on **Software Packs** and then on **Select Components**, and a new window will appear. Search for the `X-CUBE-AI` package and, as mentioned earlier during its installation, choose version `5.2.0` and activate the `Core`. If the installed version does not appear, remove and reinstall it using the same method described in section [`2.2`](#22-installing-the-x-cube-ai-package), save the project, choose not to generate the code, restart the software, and see if the correct version appears.
 
-    <p align="center">
-        <img src="images/45.png" alt="figure 57"/>
-    </p>
+<p align="center">
+    <img src="images/45.png" alt="figure 57"/>
+</p>
 
 3. Now let's configure the `X-CUBE-AI` package. Select the `Middleware and Software Packs` tab and click on `X-CUBE-AI`. Activate the package in **Mode**, and in **Configuration**, click on `Add network` and add the model in `.tflite` format generated through `Colab` with the name that will be used by its functions in the code you will write later.
 
-    <p align="center">
-        <img src="images/46.png" alt="figure 57"/>
-    </p>
+<p align="center">
+    <img src="images/46.png" alt="figure 57"/>
+</p>
 
 4. After configuring the model, we can compress it to fit in our microcontroller. As previously mentioned, the memory required to run a given model may exceed the available memory on the microcontroller. However, since our example is very small, it will not require this configuration. We can then analyze the model and verify that everything is correct by clicking on `Analyze`, which will show some parameters about the model, such as its complexity and the necessary `Flash` and `RAM` memory sizes for its implementation. The `Show graph` option will display a graphical view of your model. The desktop and target validation options can be used to validate the application of your model but will not be covered at this time.
 
-    <p align="center">
-        <img src="images/47.png" alt="figure 58"/>
-    </p>
+<p align="center">
+    <img src="images/47.png" alt="figure 58"/>
+</p>
 
 5. Now we will configure the clock of our microcontroller. To do this, select the top **Clock Configuration** tab. The large amount of information in this window may seem overwhelming initially, but we will only modify a few parameters. First, select the `High Speed Internal Clock` (HSI) in the `PLL Source Mux`, set `HCLK (MHz)` to the maximum allowed (160 MHz), press Enter, and wait for the software to find the best solution for your configuration, which should look similar to the values on the right in the photo below (red box 4).
 
-    <p align="center">
-        <img src="images/58.png" alt="figure 59"/>
-    </p>
+<p align="center">
+    <img src="images/58.png" alt="figure 59"/>
+</p>
 
 6. The final configuration step is the **Project Manager**. Select the top tab with the same name and then **Code Generator**, click on `Add necessary library files as referenced in the toolchain project configuration file`, and uncheck the option `Delete previously generated files when not re-generated`. Save the project and select to generate code in the window that appears.
 
-    <p align="center">
-        <img src="images/49.png" alt="figure 60"/>
-    </p>
+<p align="center">
+    <img src="images/49.png" alt="figure 60"/>
+</p>
 
 7. Now, your project is configured, and your initial code is generated. Ensure that you have the `X-CUBE-AI` and `Middlewares` folders in your **Project Explorer** on the left. If these folders are missing, you may have incorrectly configured the required version of `X-CUBE-AI` or selected the wrong options in the **Project Manager**.
 
@@ -2226,7 +2226,7 @@ You can also see this tutorial from STMicroelectronics on how to configure deadt
 - **Inference**: The process of running a trained machine learning model on new data to make predictions or classifications.
 - **Library**: A collection of precompiled routines that a program can use.
 - **Middleware**: Software that provides common services and capabilities to applications outside of what's offered by the operating system.
-- **MCU (Microcontroller Unit)**: A compact integrated circuit designed to govern a specific operation in an embedded system, often including a processor, memory, and input/output peripherals.
+- **MCU (Microcontroller Unit)**: A compact integrated circuit designed to govern a specific operation in an embedded system, often including a processor, memory and input/output peripherals.
 - **Model**: In machine learning, a mathematical representation of a real-world process.
 - **Peripheral**: An external device that provides input and output for the computer.
 - **Prescaler**: A component used to divide the frequency of the input clock signal.
